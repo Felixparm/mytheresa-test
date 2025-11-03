@@ -1,0 +1,14 @@
+@use '../../../styles/variables';
+
+.movie-header {
+  background: variables.$color-background-header;
+  padding: 24px 32px;
+  border-bottom: 1px solid variables.$color-divider;
+}
+
+.title {
+  font-family: variables.$font-body;
+  font-size: variables.$header-title-size;
+  font-weight: variables.$header-title-weight;
+  color: variables.$color-accent-primary;
+}

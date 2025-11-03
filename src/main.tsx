@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import HomePage from './pages/HomePage.tsx'
+import HomePage from './pages/HomePage'
 import ReactDOM from "react-dom/client";
 
 const queryClient = new QueryClient();
