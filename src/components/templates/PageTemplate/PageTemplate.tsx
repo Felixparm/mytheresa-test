@@ -3,12 +3,13 @@ import './PageTemplate.scss';
 
 interface PageTemplateProps {
   children: React.ReactNode;
+  headerTitle?: string;
 }
 
-const PageTemplate = ({ children }: PageTemplateProps) => {
+const PageTemplate = ({ children, headerTitle }: PageTemplateProps) => {
   return (
     <div className="page-template">
-      <Header />
+      <Header title={headerTitle} />
       <main className="page-content">
         {children}
       </main>

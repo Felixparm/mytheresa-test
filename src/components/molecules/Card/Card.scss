@@ -13,16 +13,47 @@
   &:hover {
     border-color: variables.$color-accent-primary;
   }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--skeleton {
+      background: variables.$color-background-card;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  &--loading {
+    animation: pulse 1.5s ease-in-out infinite;
+    cursor: default;
+    
+    &:hover {
+      border-color: transparent;
+    }
+
+    .rate-item {
+      &--skeleton {
+        width: 60px;
+        height: 20px;
+        background: variables.$color-background-card;
+        border-radius: 4px;
+      }
+    }
+  }
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-content {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

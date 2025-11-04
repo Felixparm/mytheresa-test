@@ -4,9 +4,10 @@ import './Carousel.scss';
 interface CarouselProps {
   children: React.ReactNode[];
   className?: string;
+  isLoading?: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ children, className = '' }) => {
+const Carousel: React.FC<CarouselProps> = ({ children, className = '', isLoading = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
 
@@ -44,8 +45,8 @@ const Carousel: React.FC<CarouselProps> = ({ children, className = '' }) => {
   };
 
   const translateX = -(currentIndex * 100);
-  const canGoPrev = currentIndex > 0;
-  const canGoNext = currentIndex < maxIndex;
+  const canGoPrev = !isLoading && currentIndex > 0;
+  const canGoNext = !isLoading && currentIndex < maxIndex;
 
   return (
     <div className={`carousel ${className}`}>

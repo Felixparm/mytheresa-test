@@ -5,13 +5,15 @@ interface CardProps {
   voteAverage: number;
   voteNumber: number;
   url: string;
+  movieId?: number;
+  onClick?: () => void;
 }
 
-const Card = ({ voteAverage, voteNumber, url }: CardProps) => {
+const Card = ({ voteAverage, voteNumber, url, onClick }: CardProps) => {
   return (
-    <div className="card">
-      <img src={url} alt="Movie poster" className="card-image" />
-      <div className="card-content">
+    <div className="card" onClick={onClick}>
+      <img src={url} alt="Movie poster" className="card__image" />
+      <div className="card__content">
         <RateItem voteAverage={voteAverage} voteNumber={voteNumber} />
       </div>
     </div>
