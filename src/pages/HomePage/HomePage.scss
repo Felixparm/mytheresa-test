@@ -1,3 +1,17 @@
 @use '../../styles/variables';
 
-.home-content {}
+.home-content {
+  h1, h2 {
+    margin: 32px 0 16px 0;
+    color: variables.$color-text-primary;
+  }
+
+  p {
+    margin-bottom: 24px;
+    color: variables.$color-text-secondary;
+  }
+
+  .carousel {
+    margin-bottom: 48px;
+  }
+}

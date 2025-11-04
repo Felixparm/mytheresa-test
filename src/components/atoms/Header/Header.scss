@@ -1,14 +1,24 @@
 @use '../../../styles/variables';
 
 .movie-header {
-  background: variables.$color-background-header;
+  background: variables.$color-accent-primary;
   padding: 24px 32px;
   border-bottom: 1px solid variables.$color-divider;
 }
 
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cinema-logo {
+  font-size: 36px;
+}
+
 .title {
-  font-family: variables.$font-body;
+  font-family: variables.$font-title;
   font-size: variables.$header-title-size;
   font-weight: variables.$header-title-weight;
-  color: variables.$color-accent-primary;
+  color: variables.$color-black;
 }

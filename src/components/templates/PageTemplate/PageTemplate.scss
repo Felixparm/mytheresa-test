@@ -2,11 +2,10 @@
 
 body {
   margin: 0;
+  background: variables.$color-background-main;
 }
 
 .page-template {
-  height: 100vh;
-  background: variables.$color-background-main;
   color: variables.$color-text-primary;
 }
 
