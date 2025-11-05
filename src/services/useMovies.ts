@@ -23,3 +23,24 @@ export const useMovies = (category: MovieCategory, page: number = 1) => {
     queryFn: fetchMovies,
   });
 };
+
+export const useMovie = (movieId: string) => {
+  const fetchMovie = async () => {
+    const response = await fetch(
+      `${API_BASE_URL}/movie/${movieId}?language=en-US`,
+      {
+        headers: {
+          'Authorization': `Bearer ${API_TOKEN}`,
+          'accept': 'application/json',
+        },
+      }
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  return useQuery({
+    queryKey: ['movie', movieId],
+    queryFn: fetchMovie,
+  });
+};

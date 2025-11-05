@@ -1,0 +1,27 @@
+@use '../../../styles/variables';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: variables.$color-accent-secondary;
+  color: variables.$color-black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: variables.$font-secondary;
+  font-size: variables.$secondary-text-size;
+  font-weight: variables.$badge-text-weight;
+  transition: transform 0.08s ease, filter 0.12s ease;
+
+  &:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

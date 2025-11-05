@@ -1,0 +1,57 @@
+@use '../../../styles/variables';
+
+.overview {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%;
+  }
+  h3 {
+    color: variables.$color-text-primary;
+    font-size: variables.$section-title-size;
+    font-weight: variables.$section-title-weight;
+    margin: 0px;
+  }
+  &__text {
+    color: variables.$color-text-secondary;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  &--loading {
+    .overview__skeleton-line {
+      height: 16px;
+      background: linear-gradient(
+        90deg,
+        variables.$color-background-card 25%,
+        variables.$color-hover 50%,
+        variables.$color-background-card 75%
+      );
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 4px;
+      margin-bottom: 12px;
+
+      &--title {
+        height: 24px;
+        width: 30%;
+        margin-bottom: 20px;
+      }
+
+      &--short {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

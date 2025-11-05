@@ -1,7 +1,10 @@
 @use '../pages/HomePage/HomePage.scss';
+@use '../pages/DetailPage/DetailPage.scss';
 @use '../pages/NotFoundPage.scss';
 @use '../components/atoms/Header/Header.scss';
 @use '../components/atoms/RateItem/RateItem.scss';
 @use '../components/molecules/Card/Card.scss';
+@use '../components/molecules/MoviePoster/MoviePoster.scss';
+@use '../components/molecules/Overview/Overview.scss';
 @use '../components/organisms/Carousel/Carousel.scss';
 @use '../components/templates/PageTemplate/PageTemplate.scss';

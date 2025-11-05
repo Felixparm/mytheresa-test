@@ -2,6 +2,7 @@ import './Header.scss';
 
 interface HeaderProps {
   title?: string;
+  isLoading?: boolean;
 }
 
 const Header = ({ title = 'MovieApp' }: HeaderProps) => {
