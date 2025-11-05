@@ -44,7 +44,7 @@ const HomePage = () => {
     Array.from({ length: count }, (_, i) => <CardLoading key={i} />);
 
   return (
-    <PageTemplate>
+    <PageTemplate headerTitle='MovieApp'>
       <h2>Now Playing</h2>
       <Carousel isLoading={nowPlayingLoading}>
         {nowPlayingLoading ? createLoadingCards(6) : createMovieCards(nowPlayingMovies?.results || [])}

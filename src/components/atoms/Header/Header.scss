@@ -1,4 +1,5 @@
 @use '../../../styles/variables';
+@use '../../../styles/skeleton' as *;
 
 .movie-header {
   background: variables.$color-accent-primary;
@@ -6,10 +7,20 @@
   border-bottom: 1px solid variables.$color-divider;
 }
 
+.header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .logo-title {
   display: flex;
   align-items: center;
   gap: 12px;
+
+  &--return {
+    cursor: pointer;
+  }
 }
 
 .cinema-logo {
@@ -21,4 +32,8 @@
   font-size: variables.$header-title-size;
   font-weight: variables.$header-title-weight;
   color: variables.$color-black;
+
+  &--loading {
+    @include skeleton-base($height: 22px, $width: 100px);
+  }
 }

@@ -5,14 +5,12 @@
   justify-content: center;
   align-items: center;
   min-height: 60vh;
-  background: variables.$color-accent-primary;
-  border-radius: 8px;
   margin: 32px 0;
 }
 
 .error-404 {
   font-size: variables.$error-404-size;
-  color: variables.$color-black;
+  color: variables.$color-accent-primary;
   margin: 0;
   text-align: center;
 }

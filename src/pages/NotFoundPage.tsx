@@ -4,7 +4,7 @@ import './NotFoundPage.scss';
 
 const NotFoundPage: React.FC = () => {
   return (
-    <PageTemplate headerTitle="Error 404">
+    <PageTemplate headerTitle="Error 404" isReturnButton>
       <div className="not-found-container">
         <h1 className="error-404">Page not found</h1>
       </div>

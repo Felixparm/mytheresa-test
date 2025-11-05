@@ -25,7 +25,7 @@ const DetailPage = () => {
   };
 
   return (
-    <PageTemplate headerTitle={isLoading ? undefined : movie?.title}>
+    <PageTemplate isReturnButton isLoading={isLoading} headerTitle={movie?.title}>
       <div className="detail-page">
         <div className="detail-page__poster">
           {isLoading ? (
