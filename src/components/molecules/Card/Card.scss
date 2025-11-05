@@ -28,6 +28,10 @@
     position: absolute;
     bottom: 8px;
     left: 8px;
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 16px);
+    justify-content: space-between;
   }
 
   &--loading {

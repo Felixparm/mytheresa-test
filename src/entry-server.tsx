@@ -15,7 +15,7 @@ export async function render(url: string) {
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
         <StaticRouter location={url}>
-          <Routes>
+          <Routes>      
             <Route path="/" element={<HomePage />} />
             <Route path="/movie/:id" element={<DetailPage />} />
             <Route path="*" element={<NotFoundPage />} />

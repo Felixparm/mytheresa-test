@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import { QueryClient, QueryClientProvider, HydrationBoundary } from '@tanstack/react-query'
 import HomePage from './pages/HomePage'
 import DetailPage from './pages/DetailPage/DetailPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ hydrateRoot(
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movie/:id" element={<DetailPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </HydrationBoundary>

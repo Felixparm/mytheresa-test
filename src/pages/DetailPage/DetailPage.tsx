@@ -6,10 +6,23 @@ import MoviePosterLoading from '../../components/molecules/MoviePoster/MoviePost
 import Overview from '../../components/molecules/Overview/Overview';
 import OverviewLoading from '../../components/molecules/Overview/Overview.loading';
 import './DetailPage.scss';
+import { useWishlistStore } from '../../store/whish-list.store';
 
 const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: movie, isLoading } = useMovie(id!);
+
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
+  const isWishlisted = movie ? isInWishlist(movie.id) : false;
+
+  const handleToggleWishlist = () => {
+    if (!movie) return;
+    if (isWishlisted) {
+      removeFromWishlist(movie.id);
+    } else {
+      addToWishlist({ id: movie.id, title: movie.title });
+    }
+  };
 
   return (
     <PageTemplate headerTitle={isLoading ? undefined : movie?.title}>
@@ -28,7 +41,11 @@ const DetailPage = () => {
           {isLoading ? (
             <OverviewLoading />
           ) : (
-            <Overview text={movie?.overview || 'No overview available'} onClickAddButton={() => console.log("check")} />
+            <Overview labelButton={
+              isWishlisted ? 'Remove from wish list' : 'Add to wish list'
+            }
+              text={movie?.overview || 'No overview available'}
+              onClickAddButton={handleToggleWishlist} />
           )}
         </div>
       </div>

@@ -5,10 +5,11 @@ import Button from '../../atoms/Button/Button';
 
 interface OverviewProps {
   text: string;
+  labelButton: string
   onClickAddButton: () => void;
 }
 
-const Overview: React.FC<OverviewProps> = ({ text, onClickAddButton }) => {
+const Overview: React.FC<OverviewProps> = ({ text, onClickAddButton, labelButton }) => {
   return (
     <div className="overview__container">
       <div>
@@ -16,7 +17,7 @@ const Overview: React.FC<OverviewProps> = ({ text, onClickAddButton }) => {
         <p className="overview__text">{text}</p>
       </div>
       <div>
-        <Button label={'Add to wish list'} onClick={onClickAddButton} />
+        <Button label={labelButton} onClick={onClickAddButton} />
       </div>
     </div>
   );
