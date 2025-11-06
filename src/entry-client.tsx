@@ -6,6 +6,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import ErrorPage from './pages/Error/ErrorPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Fallback } from './pages/Error/FallBackError';
+import './styles/global.scss'
 
 const queryClient = new QueryClient();
 

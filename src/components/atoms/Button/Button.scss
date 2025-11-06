@@ -1,4 +1,4 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 
 .btn {
   display: inline-flex;
@@ -6,14 +6,14 @@
   justify-content: center;
   gap: 8px;
   padding: 10px 16px;
-  background: variables.$color-accent-secondary;
-  color: variables.$color-black;
+  background: $color-accent-secondary;
+  color: $color-black;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-family: variables.$font-secondary;
-  font-size: variables.$secondary-text-size;
-  font-weight: variables.$badge-text-weight;
+  font-family: $font-secondary;
+  font-size: $secondary-text-size;
+  font-weight: $badge-text-weight;
   transition: transform 0.08s ease, filter 0.12s ease;
 
   &:hover {

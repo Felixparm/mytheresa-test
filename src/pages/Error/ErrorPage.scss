@@ -1,4 +1,4 @@
-@use '../../styles/variables';
+@use "@styles/variables" as *;
 
 .error-container {
   display: flex;
@@ -9,8 +9,8 @@
 }
 
 .error-message {
-  font-size: variables.$error-404-size;
-  color: variables.$color-accent-primary;
+  font-size: $error-404-size;
+  color: $color-accent-primary;
   margin: 0;
   text-align: center;
 }

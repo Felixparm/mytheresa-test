@@ -1,10 +1,10 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 @use '../../../styles/skeleton' as *;
 
 .movie-header {
-  background: variables.$color-accent-primary;
+  background: $color-accent-primary;
   padding: 24px 32px;
-  border-bottom: 1px solid variables.$color-divider;
+  border-bottom: 1px solid $color-divider;
 }
 
 .header-content {
@@ -28,10 +28,10 @@
 }
 
 .title {
-  font-family: variables.$font-title;
-  font-size: variables.$header-title-size;
-  font-weight: variables.$header-title-weight;
-  color: variables.$color-black;
+  font-family: $font-title;
+  font-size: $header-title-size;
+  font-weight: $header-title-weight;
+  color: $color-black;
 
   &--loading {
     @include skeleton-base($height: 22px, $width: 100px);

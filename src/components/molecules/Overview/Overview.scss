@@ -1,4 +1,4 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 @use '../../../styles/skeleton' as *;
 
 .overview {
@@ -9,13 +9,13 @@
     height: 100%;
   }
   h3 {
-    color: variables.$color-text-primary;
-    font-size: variables.$section-title-size;
-    font-weight: variables.$section-title-weight;
+    color: $color-text-primary;
+    font-size: $section-title-size;
+    font-weight: $section-title-weight;
     margin: 0px;
   }
   &__text {
-    color: variables.$color-text-secondary;
+    color: $color-text-secondary;
     line-height: 1.6;
     margin-bottom: 16px;
   }

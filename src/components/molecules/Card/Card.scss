@@ -1,4 +1,4 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 @use '../../../styles/skeleton' as *;
 
 .card {
@@ -12,7 +12,7 @@
   border: 2px solid transparent;
 
   &:hover {
-    border-color: variables.$color-accent-primary;
+    border-color: $color-accent-primary;
   }
 
   &__image {

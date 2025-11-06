@@ -1,14 +1,14 @@
-@use '../../styles/variables';
+@use "@styles/variables" as *;
 
 .home-content {
   h1, h2 {
     margin: 32px 0 16px 0;
-    color: variables.$color-text-primary;
+    color: $color-text-primary;
   }
 
   p {
     margin-bottom: 24px;
-    color: variables.$color-text-secondary;
+    color: $color-text-secondary;
   }
 
   .carousel {

@@ -1,39 +1,39 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 
 .rate-item {
   background: rgba(0, 0, 0, 0.8);
-  color: variables.$color-text-primary;
+  color: $color-text-primary;
   padding: 4px 8px;
   border-radius: 4px;
-  font-family: variables.$font-badge;
-  font-size: variables.$rate-item-size;
-  font-weight: variables.$badge-text-weight;
+  font-family: $font-badge;
+  font-size: $rate-item-size;
+  font-weight: $badge-text-weight;
   width: fit-content;
 }
 
 .rate-green {
-  color: variables.$color-rate-green;
+  color: $color-rate-green;
 }
 
 .rate-light-green {
-  color: variables.$color-rate-light-green;
+  color: $color-rate-light-green;
 }
 
 .rate-yellow {
-  color: variables.$color-rate-yellow;
+  color: $color-rate-yellow;
 }
 
 .rate-orange {
-  color: variables.$color-rate-orange;
+  color: $color-rate-orange;
 }
 
 .rate-red {
-  color: variables.$color-rate-red;
+  color: $color-rate-red;
 }
 
 .vote-count {
-  font-size: variables.$vote-count-size;
-  font-weight: variables.$vote-count-weight;
+  font-size: $vote-count-size;
+  font-weight: $vote-count-weight;
   opacity: 0.8;
   margin-left: 8px;
 }

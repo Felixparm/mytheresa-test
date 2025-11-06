@@ -1,12 +1,12 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 
 body {
   margin: 0;
-  background: variables.$color-background-main;
+  background: $color-background-main;
 }
 
 .page-template {
-  color: variables.$color-text-primary;
+  color: $color-text-primary;
 }
 
 .page-content {

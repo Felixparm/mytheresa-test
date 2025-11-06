@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { QueryClient, QueryClientProvider, dehydrate } from '@tanstack/react-query';
 import { HydrationBoundary } from '@tanstack/react-query';
@@ -8,6 +7,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import ErrorPage from './pages/Error/ErrorPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Fallback } from './pages/Error/FallBackError';
+import './styles/global.scss'
 
 export async function render(url: string) {
   const queryClient = new QueryClient();

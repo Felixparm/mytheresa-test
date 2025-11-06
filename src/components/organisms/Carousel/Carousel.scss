@@ -1,4 +1,4 @@
-@use '../../../styles/variables';
+@use "@styles/variables" as *;
 
 .carousel {
   display: flex;
@@ -17,8 +17,8 @@
 }
 
 .carousel-arrow {
-  background: variables.$color-accent-primary;
-  color: variables.$color-text-primary;
+  background: $color-accent-primary;
+  color: $color-text-primary;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -32,7 +32,7 @@
   flex-shrink: 0;
 
   &:hover {
-    background: variables.$color-hover;
+    background: $color-hover;
   }
 }
 
