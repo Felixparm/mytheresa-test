@@ -49,3 +49,10 @@ rm -rf dist
 npm run build
 npm start
 ```
+---
+
+## ✅ Run test
+```bash
+npm run test
+```
+
