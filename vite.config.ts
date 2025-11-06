@@ -1,10 +1,16 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-    resolve: {
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
+    include: ['src/**/*.test.{ts,tsx}'],
+  },
+  resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@styles': path.resolve(__dirname, './src/styles'),
@@ -16,8 +22,9 @@ export default defineConfig({
         additionalData: `@use "@styles/variables" as *;`,
       },
     },
+   
   },
-    build: {
+  build: {
     manifest: true,
     outDir: 'dist',
     rollupOptions: {
