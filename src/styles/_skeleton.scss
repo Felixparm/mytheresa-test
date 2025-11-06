@@ -1,6 +1,5 @@
 @use './variables' as variables;
 
-// 🌐 Base skeleton mixin
 @mixin skeleton-base($height: 16px, $width: 100%, $radius: 4px) {
   height: $height;
   width: $width;
@@ -15,12 +14,10 @@
   animation: skeleton-loading 1.5s infinite;
 }
 
-// 💨 Pulse animation (for subtle fade-in/out)
 @mixin pulse-animation {
   animation: pulse 1.5s ease-in-out infinite;
 }
 
-// 🔁 Keyframes shared across all components
 @keyframes skeleton-loading {
   0% {
     background-position: 200% 0;

@@ -1,8 +1,9 @@
 @use '../pages/HomePage/HomePage.scss';
 @use '../pages/DetailPage/DetailPage.scss';
-@use '../pages/ErrorPage.scss';
+@use '../pages/Error/ErrorPage.scss';
 @use '../components/atoms/Header/Header.scss';
 @use '../components/atoms/RateItem/RateItem.scss';
+@use'../components/atoms/Button/Button.scss';
 @use '../components/molecules/Card/Card.scss';
 @use '../components/molecules/MoviePoster/MoviePoster.scss';
 @use '../components/molecules/Overview/Overview.scss';

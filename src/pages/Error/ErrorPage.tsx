@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTemplate from '../components/templates/PageTemplate';
+import PageTemplate from '../../components/templates/PageTemplate';
 import './ErrorPage.scss';
 
 interface ErrorPageProps {
@@ -7,7 +7,6 @@ interface ErrorPageProps {
 }
 
 const ErrorPage: React.FC<ErrorPageProps> = ({ errorStatus }) => {
-  console.log('ErrorPage rendered with status:', errorStatus);
   return (
     <PageTemplate headerTitle={`${errorStatus}`}>
       <div className="error-container">

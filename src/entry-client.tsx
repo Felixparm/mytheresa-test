@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import { QueryClient, QueryClientProvider, HydrationBoundary } from '@tanstack/react-query'
 import HomePage from './pages/HomePage'
 import DetailPage from './pages/DetailPage/DetailPage';
-import ErrorPage from './pages/ErrorPage';
+import ErrorPage from './pages/Error/ErrorPage';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Fallback } from './pages/Error/FallBackError';
 

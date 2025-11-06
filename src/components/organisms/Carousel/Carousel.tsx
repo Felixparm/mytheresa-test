@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './Carousel.scss';
 
 interface CarouselProps {
@@ -8,45 +8,64 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ children, className = '', isLoading = false }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(1);
+
+  const getItemsPerPage = useCallback(() => {
+    const containerWidth = typeof window !== 'undefined' ? window.innerWidth - 112 : 1200; 
+    const cardWidth = 190;
+    const minGap = 16;
+
+    let newItemsPerPage = Math.floor((containerWidth + minGap) / (cardWidth + minGap));
+    return Math.max(1, Math.min(newItemsPerPage, 6));
+  }, []);
+
+  const [itemsPerPage, setItemsPerPage] = useState<number>(getItemsPerPage());
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
-    const updateItemsPerPage = () => {
-      const containerWidth = window.innerWidth - 112; // Account for arrows and gaps
-      const cardWidth = 190;
-      const minGap = 16;
-      
-      let newItemsPerPage = Math.floor((containerWidth + minGap) / (cardWidth + minGap));
-      newItemsPerPage = Math.max(1, Math.min(newItemsPerPage, 6));
-      
-      setItemsPerPage(newItemsPerPage);
-      
-      const newTotalPages = Math.ceil(children.length / newItemsPerPage);
-      if (currentIndex >= newTotalPages) {
-        setCurrentIndex(Math.max(0, newTotalPages - 1));
-      }
-    };
+    const handleResize = () => setItemsPerPage(getItemsPerPage());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getItemsPerPage]);
 
-    updateItemsPerPage();
-    window.addEventListener('resize', updateItemsPerPage);
-    return () => window.removeEventListener('resize', updateItemsPerPage);
-  }, [children.length, currentIndex]);
-
-  const totalPages = Math.ceil(children.length / itemsPerPage);
+  const totalPages = useMemo(() => Math.ceil(children.length / itemsPerPage), [children.length, itemsPerPage]);
   const maxIndex = totalPages - 1;
 
-  const goToNext = () => {
-    setCurrentIndex(prev => prev >= maxIndex ? 0 : prev + 1);
-  };
+  useEffect(() => {
+    if (currentIndex >= totalPages) {
+      setCurrentIndex(Math.max(0, totalPages - 1));
+    }
+  }, [totalPages, currentIndex]);
 
-  const goToPrev = () => {
-    setCurrentIndex(prev => prev <= 0 ? maxIndex : prev - 1);
-  };
+  const goToNext = useCallback(() => {
+    setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
+  }, [maxIndex]);
+
+  const goToPrev = useCallback(() => {
+    setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
+  }, [maxIndex]);
 
   const translateX = -(currentIndex * 100);
   const canGoPrev = !isLoading && currentIndex > 0;
   const canGoNext = !isLoading && currentIndex < maxIndex;
+
+  const pages = useMemo(() => {
+    return Array.from({ length: totalPages }, (_, pageIndex) => {
+      const startIndex = pageIndex * itemsPerPage;
+      const pageItems = children.slice(startIndex, startIndex + itemsPerPage);
+      const placeholdersNeeded = itemsPerPage - pageItems.length;
+
+      const placeholders = Array.from({ length: placeholdersNeeded }, (_, i) => (
+        <div key={`placeholder-${pageIndex}-${i}`} className="carousel-placeholder" />
+      ));
+
+      return (
+        <div key={pageIndex} className="carousel-page">
+          {pageItems}
+          {placeholders}
+        </div>
+      );
+    });
+  }, [children, itemsPerPage, totalPages]);
 
   return (
     <div className={`carousel ${className}`}>
@@ -57,29 +76,19 @@ const Carousel: React.FC<CarouselProps> = ({ children, className = '', isLoading
           </button>
         )}
       </div>
-      
+
       <div className="carousel-container">
-        <div 
+        <div
           className="carousel-track"
-          style={{ transform: `translateX(${translateX}%)` }}
+          style={{
+            transform: `translateX(${translateX}%)`,
+            transition: 'transform 0.4s ease', 
+          }}
         >
-          {Array.from({ length: totalPages }, (_, pageIndex) => {
-            const startIndex = pageIndex * itemsPerPage;
-            const pageItems = children.slice(startIndex, startIndex + itemsPerPage);
-            const placeholdersNeeded = itemsPerPage - pageItems.length;
-            const placeholders = Array.from({ length: placeholdersNeeded }, (_, i) => (
-              <div key={`placeholder-${pageIndex}-${i}`} className="carousel-placeholder" />
-            ));
-            return (
-              <div key={pageIndex} className="carousel-page">
-                {pageItems}
-                {placeholders}
-              </div>
-            );
-          })}
+          {pages}
         </div>
       </div>
-      
+
       <div className="carousel-arrow-placeholder">
         {canGoNext && (
           <button className="carousel-arrow carousel-arrow--next" onClick={goToNext}>
