@@ -1,6 +1,6 @@
 @use '../styles/variables';
 
-.not-found-container {
+.error-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,7 @@
   margin: 32px 0;
 }
 
-.error-404 {
+.error-message {
   font-size: variables.$error-404-size;
   color: variables.$color-accent-primary;
   margin: 0;

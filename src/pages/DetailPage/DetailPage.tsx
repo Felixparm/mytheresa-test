@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import PageTemplate from '../../components/templates/PageTemplate';
 import { useMovie } from '../../services/useMovies';
 import MoviePoster from '../../components/molecules/MoviePoster/MoviePoster';
@@ -11,8 +11,8 @@ import { useWishlistStore } from '../../store/whish-list.store';
 const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: movie, isLoading } = useMovie(id!);
-
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlistStore();
+  const navigate = useNavigate();
   const isWishlisted = movie ? isInWishlist(movie.id) : false;
 
   const handleToggleWishlist = () => {
@@ -25,7 +25,7 @@ const DetailPage = () => {
   };
 
   return (
-    <PageTemplate isReturnButton isLoading={isLoading} headerTitle={movie?.title}>
+    <PageTemplate labelRedirection='<< Back' onClickRedirection={() => navigate('/')} isLoading={isLoading} headerTitle={movie?.title}>
       <div className="detail-page">
         <div className="detail-page__poster">
           {isLoading ? (

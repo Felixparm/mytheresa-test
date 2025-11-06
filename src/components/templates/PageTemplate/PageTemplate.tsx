@@ -4,14 +4,15 @@ import './PageTemplate.scss';
 interface PageTemplateProps {
   children: React.ReactNode;
   headerTitle?: string;
-  isReturnButton?: boolean;
   isLoading?: boolean;
+  onClickRedirection?: () => void;
+  labelRedirection?: string;
 }
 
-const PageTemplate = ({ children, headerTitle, isReturnButton, isLoading }: PageTemplateProps) => {
+const PageTemplate = ({ children, headerTitle, onClickRedirection, labelRedirection, isLoading }: PageTemplateProps) => {
   return (
     <div className="page-template">
-      <Header isLoading={isLoading} title={headerTitle} isReturnButton={isReturnButton} />
+      <Header isLoading={isLoading} title={headerTitle} onClickRedirection={onClickRedirection} labelRedirection={labelRedirection} />
       <main className="page-content">
         {children}
       </main>

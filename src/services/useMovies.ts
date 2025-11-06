@@ -15,12 +15,17 @@ export const useMovies = (category: MovieCategory, page: number = 1) => {
         },
       }
     );
+    if (!response.ok) {
+      throw response.status;
+    }
     return response.json();
   };
+
 
   return useQuery({
     queryKey: ['movies', category, page],
     queryFn: fetchMovies,
+    throwOnError: true,
   });
 };
 
@@ -35,6 +40,9 @@ export const useMovie = (movieId: string) => {
         },
       }
     );
+    if (!response.ok) {
+      throw response.status;
+    }
     const data = await response.json();
     return data;
   };
@@ -42,5 +50,6 @@ export const useMovie = (movieId: string) => {
   return useQuery({
     queryKey: ['movie', movieId],
     queryFn: fetchMovie,
+    throwOnError: true,
   });
 };

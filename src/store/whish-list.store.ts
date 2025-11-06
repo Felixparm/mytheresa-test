@@ -1,4 +1,3 @@
-// src/store/wishlist.store.ts
 import { create, type StateCreator } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -11,15 +10,14 @@ export interface WishlistState {
   isInWishlist: (id: string) => boolean;
 }
 
-// StateCreator comes from 'zustand' (NOT 'zustand/middleware')
 const wishlistStoreCreator: StateCreator<WishlistState> = (set, get) => ({
   items: [],
 
   addToWishlist: (item) =>
     set((state) =>
       state.items.some((i) => i.id === item.id)
-        ? {} // no-op (partial update with empty object)
-        : { items: [...state.items, item] } // partial update merged by zustand
+        ? {} 
+        : { items: [...state.items, item] }
     ),
 
   removeFromWishlist: (id) =>

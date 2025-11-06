@@ -1,14 +1,13 @@
-import { useNavigate } from 'react-router';
 import './Header.scss';
 
 interface HeaderProps {
   title?: string;
   isLoading?: boolean;
-  isReturnButton?: boolean
+ onClickRedirection?: () => void;
+ labelRedirection?: string;
 }
 
-const Header = ({ title, isReturnButton, isLoading }: HeaderProps) => {
-  const navigate = useNavigate();
+const Header = ({ title, onClickRedirection,labelRedirection, isLoading }: HeaderProps) => {
   return (
     <header className="movie-header">
       <div className="header-content">
@@ -17,8 +16,8 @@ const Header = ({ title, isReturnButton, isLoading }: HeaderProps) => {
           {isLoading ? <div className='title--loading' /> : <h1 className="title">{title}</h1>}
         </div>
         <div>
-          {isReturnButton &&
-            <div onClick={() => navigate("/")} className="logo-title--return">
+          {labelRedirection &&
+            <div onClick={onClickRedirection} className="logo-title--return">
               <h1 className="title">{"❮❮ back"}</h1>
             </div>
           }
